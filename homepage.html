@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Interface</title>
+    <style>
+
+        .title-box {
+            background-color: #3498db; /* Set your desired background color */
+            padding: 20px; /* Add some padding for space around the title */
+            text-align: center; /* Center the text */
+        }
+
+        body {
+            background-color: #bbbbbb;
+            text-align: center;
+        }
+
+        .text-large {
+            font-size: 25px;
+        }
+
+        .separator {
+            border: none;
+            height: 10px;
+        }
+
+        #question-section {
+            margin-top: 10px;
+        }
+
+        #question {
+            height: 100px;
+            width: 300px;
+            box-sizing: border-box;
+            font-size: 18px;
+            overflow: hidden;
+            white-space: pre-wrap; /* Preserve line breaks */
+            word-wrap: break-word; /* Break words to prevent overflow */
+        }
+
+        #token-limit {
+            font-size: 18px;
+            padding: 5px 5px;
+        }
+
+        #ask-button {
+            font-size: 18px;
+            padding: 5px 15px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="title-box">
+    <h1 class="title">Welcome to my Chatbot Interface</h1>
+    </div>
+    <section class="title-box2">
+    <hr>
+    <label class="text-large" for="question">Ask a question:</label>
+    <section id="question-section">
+        <textarea id="question" name="question" rows="4" cols="50" placeholder="Type your question here">
+        </textarea>
+    </section>
+
+    <hr class="separator">
+
+    <section id="token-limit-section">
+    <label class="text-large" for="token-limit">Token Limit:</label>
+    <select id="token-limit">
+        <option value="50">50 tokens</option>
+        <option value="100">100 tokens</option>
+        <option value="150">150 tokens</option>
+    </select>
+    </section>
+
+    <hr class="separator">
+
+    <button id="ask-button" onclick="askQuestion()">Ask</button>
+
+    <div id="response-container">
+        <p id="response"></p>
+    </div>
+    <script>
+        function askQuestion() {
+            var question = document.getElementById("question").value;
+            var tokenLimit = document.getElementById("token-limit").value;
+
+            // Send the question and token limit to the server
+            fetch(`/ask?question=${encodeURIComponent(question)}&token_limit=${tokenLimit}`)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("response").innerText = data;
+                });
+        }
+    </script>
+    </section>
+</body>
+</html>
