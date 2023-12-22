@@ -30,7 +30,7 @@ def ask_get():
         model= "gpt-3.5-turbo",
         messages=messages,
         temperature=0, # this is the degree of randomness of the model's output
-        max_tokens= 1024, # the maximum number of tokens to generate
+        max_tokens= 200, # the maximum number of tokens to generate
     )
     #print(response)
     # Extract the chatbot's reply from the response
