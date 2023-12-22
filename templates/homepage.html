@@ -50,51 +50,81 @@
             padding: 5px 15px;
         }
 
+        .chatbox-texbox {
+            width:400px;
+            margin: 20px auto;
+            padding-top:5px;
+            border-style:solid;
+            border-color:#000000;
+            background-color: #A9A9A9;
+            border-width:3px;
+            padding-left:3px;
+            padding-bottom:10px;
+            word-wrap: break-word;
+            font-family: 'Courier New', Courier, monospace;
+            
+        }
+
     </style>
 </head>
 <body>
     <div class="title-box">
     <h1 class="title">Welcome to my Chatbot Interface</h1>
     </div>
-    <section class="title-box2">
     <hr>
     <label class="text-large" for="question">Ask a question:</label>
+    <form action="http://127.0.0.1:5000/ask" method="POST" id="question-form">
     <section id="question-section">
-        <textarea id="question" name="question" rows="4" cols="50" placeholder="Type your question here">
-        </textarea>
+        <!-- <textarea id="question" name="question" rows="4" cols="50" placeholder="Type your question here">
+        </textarea> -->
+        <input id="question" name="question" type="text" placeholder="Type your question here">
     </section>
 
     <hr class="separator">
 
-    <section id="token-limit-section">
-    <label class="text-large" for="token-limit">Token Limit:</label>
-    <select id="token-limit">
+    <!-- <section id="token-limit-section">
+    <label class="text-large" for="token-limit">Token Limit:</label> -->
+    <!-- <select id="token_limit">
         <option value="50">50 tokens</option>
         <option value="100">100 tokens</option>
         <option value="150">150 tokens</option>
-    </select>
-    </section>
+    </select> -->
+    <!-- <input type="text" id="token_limit" name="token_limit" placeholder="Type in a token size">
+    </section> -->
 
     <hr class="separator">
 
     <button id="ask-button" onclick="askQuestion()">Ask</button>
 
-    <div id="response-container">
-        <p id="response"></p>
-    </div>
+    <hr>
+
+    <h2 class="title">Response from ChatBot</h2>
+    <section class="chatbox-texbox">
+        <div id="response-container">
+            <p id="response"><strong></strong></p>
+        </div>
+    </section>
     <script>
         function askQuestion() {
-            var question = document.getElementById("question").value;
-            var tokenLimit = document.getElementById("token-limit").value;
+            event.preventDefault();
 
-            // Send the question and token limit to the server
-            fetch(`/ask?question=${encodeURIComponent(question)}&token_limit=${tokenLimit}`)
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById("response").innerText = data;
-                });
+            var question = document.getElementById('question').value;
+
+            var formData = new FormData();
+            formData.append('question', question);
+
+            fetch('http://127.0.0.1:5000/ask', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+
+                document.getElementById('response').innerText = data;
+            })
         }
     </script>
-    </section>
+
+</form>
 </body>
 </html>
