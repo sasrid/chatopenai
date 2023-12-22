@@ -113,8 +113,8 @@
 
             var formData = new FormData();
             formData.append('question', question);
-
-            fetch('http://127.0.0.1:5000/ask', {
+            // fetch('http://127.0.0.1:5000/ask'
+            fetch('http://sarveshsridheropenaichat.azurewebsites.net/ask', {
                 method: 'POST',
                 body: formData
             })
