@@ -74,7 +74,7 @@
     <hr>
     <label class="text-large" for="question">Ask a question:</label>
     <!-- <form action="http://127.0.0.1:5000/ask" method="POST" id="question-form"> -->
-    <form action="http://sarveshsridheropenaichat.azurewebsites.net/ask" method="POST" id="question-form"></form>
+    <form action="/ask" method="POST" id="question-form"></form>
     <section id="question-section">
         <!-- <textarea id="question" name="question" rows="4" cols="50" placeholder="Type your question here">
         </textarea> -->
@@ -114,7 +114,7 @@
             var formData = new FormData();
             formData.append('question', question);
             // fetch('http://127.0.0.1:5000/ask'
-            fetch('http://sarveshsridheropenaichat.azurewebsites.net/ask', {
+            fetch('/ask', {
                 method: 'POST',
                 body: formData
             })
