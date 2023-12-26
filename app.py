@@ -14,6 +14,7 @@ client = OpenAI(
 )
 
 @app.route('/')
+@app.route('/base')
 def index():
     return render_template('homepage.html')
 
