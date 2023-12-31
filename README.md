@@ -12,10 +12,12 @@
 - Azure Webapp to deploy Python app or this app can be run locally
 
 
-##### How it works
+##### How it works  
 
-app.py listens on port 5000 and it has decorators for / and /ask routes. 
-app.py serves HTML/JS at / path.   
-app.py addresses POST call at /ask path.
+app.py listens on port 5000 and it has decorators for / and /ask routes.   
+  
+app.py serves HTML/JS at / path.     
+  
+app.py addresses POST call at /ask path.  It uses OpenAI API key from environment variable, calls OpenAI Chat Completion API and then it updates the HTML page with the response using Javascript.
 
 
