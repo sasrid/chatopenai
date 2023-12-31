@@ -12,7 +12,7 @@
 - Azure Webapp to deploy Python app or this app can be run locally
 
 
-##### How it works  
+#### How it works  
 
 app.py listens on port 5000 and it has decorators for / and /ask routes.   
   
