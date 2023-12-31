@@ -14,6 +14,8 @@
 
 ##### How it works
 
-app.py listens on port 5000 and it has decorators 
+app.py listens on port 5000 and it has decorators for / and /ask routes. 
 app.py serves HTML/JS at / path.   
-app.py 
+app.py addresses POST call at /ask path.
+
+
